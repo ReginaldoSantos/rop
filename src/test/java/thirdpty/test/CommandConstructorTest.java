@@ -4,14 +4,13 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import thirdpty.test.negative.NoDefaultConstructor;
-
 import com.github.ryenus.rop.OptionParser;
+
+import thirdpty.test.negative.NoDefaultConstructor;
 
 public class CommandConstructorTest {
 
-	@SuppressWarnings("unused")
-	private OptionParser parser;
+	OptionParser parser;
 
 	@Test
 	public void privateConstructor() {
