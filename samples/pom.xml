@@ -1,0 +1,145 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.github.ryenus</groupId>
+  <artifactId>samples</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Samples</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jar.mainclass>com.github.ryenus.rop.samples.GitLikeMainCommand</jar.mainclass>
+    <jdk.version>1.7</jdk.version>
+    <junit.version>4.11</junit.version>
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.github.ryenus</groupId>
+      <artifactId>rop</artifactId>
+      <version>1.2-SNAPSHOT</version>
+    </dependency>
+
+  </dependencies>
+
+  <profiles>
+    <profile>
+      <!-- Git like command line: A main command (level 1) with only one sub command (level 2) -->
+      <id>singleCmd</id>
+      <properties>
+        <jar.mainclass>com.github.ryenus.rop.samples.GitLikeMainCommand</jar.mainclass>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>test</phase>
+                <goals>
+                  <goal>java</goal>
+                </goals>
+                <configuration>
+                  <skip>${skipTests}</skip>
+                  <mainClass>${jar.mainclass}</mainClass>
+                  <arguments>
+                    <argument>--help</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <!-- Maven like command line: A main command (level 1) with multi sub commands (level 2) -->
+      <id>multiCmd</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <jar.mainclass>com.github.ryenus.rop.samples.MavenLikeMainCommand</jar.mainclass>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>test</phase>
+                <goals>
+                  <goal>java</goal>
+                </goals>
+                <configuration>
+                  <skip>${skipTests}</skip>
+                  <mainClass>${jar.mainclass}</mainClass>
+                  <arguments>
+                    <argument>--help</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <!-- Fat Jar Profile: Used to create unique executable jar. -->
+      <id>fatJar</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <skipTests>true</skipTests>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <source>${jdk.version}</source>
+              <target>${jdk.version}</target>
+              <encoding>${project.build.sourceEncoding}</encoding>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+              <archive>
+                <manifest>
+                  <mainClass>${jar.mainclass}</mainClass>
+                </manifest>
+              </archive>
+            </configuration>
+            <executions>
+              <execution>
+                <id>make-assembly</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+  </profiles>
+
+</project>
