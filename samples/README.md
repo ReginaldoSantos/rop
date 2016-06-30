@@ -35,7 +35,7 @@ There is also a profile showing how to build a single JAR for distribution using
 
 ```
 $ mvn clean package
-$ java -jar target\samples-0.0.1-SNAPSHOT-jar-with-dependencies.jar --help
+$ java -jar target\samples-0.0.1-SNAPSHOT-jar-with-dependencies.jar git --help
 ```
 
 
