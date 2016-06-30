@@ -4,10 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.github.ryenus.rop.OptionParser;
+
 import thirdpty.test.PrivateConstructor;
 import thirdpty.test.RunnableCommand;
-
-import com.github.ryenus.rop.OptionParser;
 
 public class NegativeCasesTest {
 	private OptionParser parser;

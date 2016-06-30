@@ -8,8 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import com.github.ryenus.rop.OptionParser.Command;
-import com.github.ryenus.rop.OptionParser.Option;
+import com.github.ryenus.rop.annotations.Command;
+import com.github.ryenus.rop.annotations.Option;
 
 class CommandInfo {
 	Object command;

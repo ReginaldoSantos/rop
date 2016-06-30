@@ -2,7 +2,7 @@ package com.github.ryenus.rop;
 
 import java.lang.reflect.Field;
 
-import com.github.ryenus.rop.OptionParser.Option;
+import com.github.ryenus.rop.annotations.Option;
 
 class OptionInfo {
 	Field field;

@@ -6,8 +6,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import com.github.ryenus.rop.OptionParser;
-import com.github.ryenus.rop.OptionParser.Command;
-import com.github.ryenus.rop.OptionParser.Option;
+import com.github.ryenus.rop.annotations.Command;
+import com.github.ryenus.rop.annotations.Option;
 
 
 public class RunnableCommandTest {

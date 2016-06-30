@@ -1,8 +1,8 @@
 package com.github.ryenus.rop.samples;
 
 import com.github.ryenus.rop.OptionParser;
-import com.github.ryenus.rop.OptionParser.Command;
-import com.github.ryenus.rop.OptionParser.Option;
+import com.github.ryenus.rop.annotations.Command;
+import com.github.ryenus.rop.annotations.Option;
 
 @Command(name = "Maven", descriptions = "Maven is a build automation tool used primarily for Java projects")
 public class MavenLikeMainCommand { // this is the parent Command
