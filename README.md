@@ -9,3 +9,12 @@ Check original project (here)[https://github.com/ryenus/rop]
 ## Initial IDEA
 
 Do something similar to spring-shell using component scan to load the commands.
+
+Supose a call to:
+
+```
+$ git add .
+```
+
+Main class would initially parse the first command to be able of identifying the main command (@Command with name="git" level 1) and build an OptionParser with command plus its children (@Command with parent="git" level 2 or shall I go for @SubCommand?).
+Well, once it first parse is done, the rest will be same.
