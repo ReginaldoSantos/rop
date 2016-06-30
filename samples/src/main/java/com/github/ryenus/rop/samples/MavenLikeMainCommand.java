@@ -11,8 +11,15 @@ public class MavenLikeMainCommand { // this is the parent Command
 	boolean offline;
 
 	public static void main(String[] args) {
-		OptionParser parser = new OptionParser(MavenLikeMainCommand.class, // first Command is the parent (level-1 Command)
-				MavenCleanCommand.class, MavenTestCommand.class); // all others are level-2 sub-commands
+		OptionParser parser = 
+		  new OptionParser(
+		    // first Command is the parent (level-1 Command)
+			MavenLikeMainCommand.class, 
+			// all others are level-2 sub-commands
+			MavenCleanCommand.class, 
+			MavenTestCommand.class
+	      ); 
+		
 		parser.parse(args, true); // with the additional boolean argument, multiple sub-commands can run together
 	}
 }

@@ -7,7 +7,7 @@ import com.github.ryenus.rop.annotations.Option;
 @Command(name = "git", descriptions = "Git - A fast, scalable, distributed revision control system")
 public class GitLikeMainCommand { // this is the parent Command
 
-	@Option(opt = "--version", description = "Print the version information and exit")
+	@Option(opt = {"-v", "--version"}, description = "Print the version information and exit")
 	boolean version; // whether to print version
 
 	void run() {
