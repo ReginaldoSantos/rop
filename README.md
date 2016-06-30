@@ -1,3 +1,9 @@
+# This Is a Fork of Rop
+
+This is a Fork of Rop lib aiming to include discoverable or pluggable '@Command' implementations, so sub commands could be add on the fly just being available in the classpath.
+
+Following goes the original README.md
+
 # Rop
 
 [![Build Status](https://travis-ci.org/ryenus/rop.png?branch=master)](https://travis-ci.org/ryenus/rop)
