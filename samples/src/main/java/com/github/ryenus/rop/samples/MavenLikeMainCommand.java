@@ -4,7 +4,7 @@ import com.github.ryenus.rop.OptionParser;
 import com.github.ryenus.rop.annotations.Command;
 import com.github.ryenus.rop.annotations.Option;
 
-@Command(name = "Maven", descriptions = "Maven is a build automation tool used primarily for Java projects")
+@Command(name = "mvn", descriptions = "Maven is a build automation tool used primarily for Java projects")
 public class MavenLikeMainCommand { // this is the parent Command
 
 	@Option(opt = { "-o", "--offline" }, description = "Work offline")
@@ -23,15 +23,20 @@ class MavenCleanCommand {
 
 	void run() {
 		// Simply perform the cleanup
+		System.out.println("***   running clean   ***");
 	}
 }
 
 @Command(name = "test", descriptions = "test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed")
 class MavenTestCommand {
 	void run(OptionParser parser) {
+		
+		System.out.println("***   running tests   ***");
+		
 		MavenLikeMainCommand mavenMainCommand = parser.get(MavenLikeMainCommand.class);
 		if (mavenMainCommand.offline) {
 			// work offline, no network connection
+			System.out.println("***   running tests: offline option   ***");
 		}
 		// do the test
 	}

@@ -29,7 +29,11 @@
 
   <profiles>
     <profile>
-      <!-- Git like command line: A main command (level 1) with only one sub command (level 2) -->
+      <!-- 
+	    Git like command line: A main command (level 1) with only one sub command (level 2) 
+		
+		$ git --help
+	  -->
       <id>singleCmd</id>
       <properties>
         <jar.mainclass>com.github.ryenus.rop.samples.GitLikeMainCommand</jar.mainclass>
@@ -49,6 +53,7 @@
                   <skip>${skipTests}</skip>
                   <mainClass>${jar.mainclass}</mainClass>
                   <arguments>
+				    <argument>git</argument>
                     <argument>--help</argument>
                   </arguments>
                 </configuration>
@@ -60,7 +65,11 @@
     </profile>
 
     <profile>
-      <!-- Maven like command line: A main command (level 1) with multi sub commands (level 2) -->
+      <!-- 
+	    Maven like command line: A main command (level 1) with multi sub commands (level 2) 
+		
+		$ mvn --offline clean test
+	  -->
       <id>multiCmd</id>
       <activation>
         <activeByDefault>true</activeByDefault>
@@ -73,6 +82,7 @@
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
+			<version>1.5.0</version>
             <executions>
               <execution>
                 <phase>test</phase>
@@ -83,7 +93,10 @@
                   <skip>${skipTests}</skip>
                   <mainClass>${jar.mainclass}</mainClass>
                   <arguments>
-                    <argument>--help</argument>
+                    <argument>mvn</argument>
+					<argument>--offline</argument>
+					<argument>clean</argument>
+					<argument>test</argument>
                   </arguments>
                 </configuration>
               </execution>
